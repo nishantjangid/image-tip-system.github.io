@@ -66,11 +66,13 @@ $("#submit").on('click', (e)=>{
                 })        
             }else{
                 alert("Please connect metamask");
+                $("#loaderDiv").css('display','none');
             }        
         }
         reader.readAsArrayBuffer(file.files[0]);
     }else{
         alert("Please fill required fields");
+        $("#loaderDiv").css('display','none');
         return false;
     }
 })
