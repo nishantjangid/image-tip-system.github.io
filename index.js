@@ -73,6 +73,7 @@ $("#submit").on('click', (e)=>{
         reader.readAsArrayBuffer(file.files[0]);        
         }else{
             alert("Please connect wallet");
+            $("#loaderDiv").css('display','none');
             return false;
         }
 
