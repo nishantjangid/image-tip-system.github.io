@@ -42,6 +42,7 @@ $("#submit").on('click', (e)=>{
     $("#loaderDiv").css('display','block');
 
     if(desc != (null || undefined || "") && image != (null || undefined || "")){
+        if(connectedAccount){
         reader.onloadend = function(e){
             let ipfs = new IpfsApi({host:`ipfs.infura.io`,port:5001,protocol:`https`})
             let {Buffer} = ipfs;
@@ -69,7 +70,12 @@ $("#submit").on('click', (e)=>{
                 $("#loaderDiv").css('display','none');
             }        
         }
-        reader.readAsArrayBuffer(file.files[0]);
+        reader.readAsArrayBuffer(file.files[0]);        
+        }else{
+            alert("Please connect wallet");
+            return false;
+        }
+
     }else{
         alert("Please fill required fields");
         $("#loaderDiv").css('display','none');
